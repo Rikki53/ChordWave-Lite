@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rikki53.github.io/BitChord-PC-Continued/sitemap.xml

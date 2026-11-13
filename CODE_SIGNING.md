@@ -6,12 +6,12 @@ Free code signing provided by [SignPath.io](https://about.signpath.io), certific
 
 ## Team
 
-- Committers and reviewers: [grapedjuice](https://github.com/grapedjuice)
-- Approvers: [grapedjuice](https://github.com/grapedjuice)
+- Committers and reviewers: [Rikki53](https://github.com/Rikki53)
+- Approvers: [Rikki53](https://github.com/Rikki53)
 
 ## Privacy
 
-bitchord only talks to the services it needs to play your music:
+chordwave only talks to the services it needs to play your music:
 
 - **YouTube Music and Google** (`music.youtube.com`, `youtube.com`, `googlevideo.com`, `accounts.google.com`) for browsing, playback, likes, playlists and sign-in. Your sign-in cookie stays on your PC.
 - **Better Lyrics** (`lyrics.api.dacubeking.com`) receives the song's YouTube ID, title, artist, album and length to find synced lyrics.

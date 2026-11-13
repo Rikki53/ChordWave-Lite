@@ -5,17 +5,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>BitChord</string>
+	<string>ChordWave</string>
 	<key>CFBundleExecutable</key>
-	<string>bitchord</string>
+	<string>chordwave</string>
 	<key>CFBundleIconFile</key>
-	<string>bitchord</string>
+	<string>chordwave</string>
 	<key>CFBundleIdentifier</key>
-	<string>io.github.jackychan4891.bitchord</string>
+	<string>com.riki.chordwave</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>BitChord</string>
+	<string>ChordWave</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

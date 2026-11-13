@@ -1089,7 +1089,7 @@ fn switch_row(ui: &mut Ui, label: &str, on: &mut bool) {
     ui.painter().text(pos2(rect.left() + 12.0, rect.center().y), egui::Align2::LEFT_CENTER, label, theme::regular(14.0), theme::text());
     let t = theme::anim_bool(ui.ctx(), resp.id.with("t"), *on, 0.16);
     let track = Rect::from_center_size(pos2(rect.right() - 30.0, rect.center().y), vec2(36.0, 20.0));
-    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::RED);
+    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::DEFAULT_ACCENT);
     ui.painter().rect_filled(track, 10.0, theme::lerp_color(theme::glass(0.16 + 0.06 * h), accent, t));
     let knob = pos2(egui::lerp(track.left() + 10.0..=track.right() - 10.0, t), track.center().y);
     ui.painter().circle_filled(knob, 8.0, Color32::WHITE);

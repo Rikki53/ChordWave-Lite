@@ -13,10 +13,15 @@ use discord_rich_presence::{DiscordIpc, DiscordIpcClient};
 
 /// Application ID from the Discord Developer Portal. Its name is what Discord shows
 /// as "Listening to <name>" in the profile card.
+///
+/// This is still upstream's Discord app registration: the profile card shows
+/// `APP_NAME` instead (see below), so listeners see ChordWave. To use a
+/// ChordWave-owned app instead, create one in the Discord Developer Portal
+/// and set `YTM_DISCORD_ID` (or replace this ID).
 const CLIENT_ID: &str = "1521756469433991299";
 
 /// The name the profile card shows, in place of the Discord app's registered name.
-const APP_NAME: &str = "BitChord PC Continued";
+const APP_NAME: &str = "ChordWave";
 
 const RETRY: Duration = Duration::from_secs(15);
 

@@ -240,7 +240,7 @@ pub fn chip(ui: &mut Ui, label: &str, selected: bool) -> Response {
     let radius = (crate::preset::active().chrome.radius * 0.55).clamp(4.0, 17.0);
     let (on_fill, on_fg) = match style {
         ChipStyle::Accent => {
-            let a = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::RED);
+            let a = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::DEFAULT_ACCENT);
             (a, if a.r() as u32 + a.g() as u32 + a.b() as u32 > 480 { Color32::from_gray(15) } else { Color32::WHITE })
         }
         _ => (theme::text(), theme::on_text()),

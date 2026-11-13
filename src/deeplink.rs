@@ -1,4 +1,5 @@
-//! Jam deep links: `ytm-rs://jam/CODE` and `https://grapedjuice.github.io/ytm-rs/jam/?c=CODE`.
+//! Jam deep links: `ytm-rs://jam/CODE` and `https://rikki53.github.io/BitChord-PC-Continued/jam/?c=CODE`.
+//! Older `grapedjuice.github.io/ytm-rs/jam/` share links still parse.
 //!
 //! Clicking a link launches a new process with the URL as its argument. If another
 //! instance is already running, the new one hands the code over a named pipe and
@@ -41,7 +42,7 @@ pub fn parse(arg: &str) -> Option<String> {
         let (path, query) = rest.split_once('?')?;
         let lower = path.to_ascii_lowercase();
         let path = lower.trim_end_matches('/').trim_end_matches("/index.html");
-        if path != "grapedjuice.github.io/ytm-rs/jam" {
+        if path != "rikki53.github.io/BitChord-PC-Continued/jam" && path != "grapedjuice.github.io/ytm-rs/jam" {
             return None;
         }
         return query_param(query, "c").and_then(normalize);
@@ -296,6 +297,8 @@ mod tests {
 
     #[test]
     fn share_link() {
+        assert_eq!(parse("https://rikki53.github.io/BitChord-PC-Continued/jam/?c=ABC234").as_deref(), Some("ABC234"));
+        assert_eq!(parse("https://rikki53.github.io/BitChord-PC-Continued/jam?c=abc234").as_deref(), Some("ABC234"));
         assert_eq!(parse("https://grapedjuice.github.io/ytm-rs/jam/?c=ABC234").as_deref(), Some("ABC234"));
         assert_eq!(parse("https://grapedjuice.github.io/ytm-rs/jam?c=abc234").as_deref(), Some("ABC234"));
         assert_eq!(parse("https://grapedjuice.github.io/ytm-rs/jam/index.html?x=1&c=abc234#top").as_deref(), Some("ABC234"));
@@ -336,7 +339,7 @@ mod tests {
         use windows::Win32::System::Registry::{HKEY_CURRENT_USER, RRF_RT_REG_SZ, RegDeleteTreeW, RegGetValueW};
         use windows::core::HSTRING;
         let key = format!(r"Software\ytm-rs-deeplink-test-{}", std::process::id());
-        win::register_at(HKEY_CURRENT_USER, &key, r"C:\x\ytm-rs.exe").unwrap();
+        win::register_at(HKEY_CURRENT_USER, &key, r"C:\x\chordwave.exe").unwrap();
         let read = |sub: &str, name: &str| -> String {
             let mut buf = [0u16; 256];
             let mut len = (buf.len() * 2) as u32;
@@ -362,7 +365,7 @@ mod tests {
         }
         assert_eq!(results.0, "URL:ytm-rs Protocol");
         assert_eq!(results.1, "");
-        assert_eq!(results.2, r#""C:\x\ytm-rs.exe",0"#);
-        assert_eq!(results.3, r#""C:\x\ytm-rs.exe" "%1""#);
+        assert_eq!(results.2, r#""C:\x\chordwave.exe",0"#);
+        assert_eq!(results.3, r#""C:\x\chordwave.exe" "%1""#);
     }
 }

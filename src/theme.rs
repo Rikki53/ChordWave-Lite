@@ -16,8 +16,11 @@ const BG_LIGHT: Color32 = Color32::from_rgb(246, 244, 248);
 const TEXT_LIGHT: Color32 = Color32::from_rgb(22, 20, 26);
 const TEXT_DIM_LIGHT: Color32 = Color32::from_rgb(86, 82, 94);
 const TEXT_FAINT_LIGHT: Color32 = Color32::from_rgb(124, 118, 132);
-/// Default accent until a cover provides one (BitChord pink).
+/// Error colour (also the old default accent).
 pub const RED: Color32 = Color32::from_rgb(0xFA, 0x58, 0x6A);
+
+/// Default accent until a cover provides one (ChordWave mint).
+pub const DEFAULT_ACCENT: Color32 = Color32::from_rgb(0x5D, 0xF0, 0xCB);
 
 /// Light or dark, as the app picked it for what's being drawn (see `set_mode`): the
 /// colours below follow it. Now playing always draws dark, over the album art.
@@ -887,7 +890,7 @@ fn visuals() -> egui::Visuals {
     v.window_fill = surface_fill();
     v.extreme_bg_color = glass(0.08);
     v.override_text_color = Some(text());
-    v.selection.bg_fill = with_alpha(RED, if light() { 0.3 } else { 0.5 });
+    v.selection.bg_fill = with_alpha(DEFAULT_ACCENT, if light() { 0.3 } else { 0.5 });
     v.hyperlink_color = text();
     v.interact_cursor = Some(egui::CursorIcon::PointingHand);
     let pr = egui::CornerRadius::same(p.app.panel_radius.clamp(0.0, 32.0) as u8);

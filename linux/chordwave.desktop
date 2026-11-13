@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
-Name=BitChord
+Name=ChordWave
 GenericName=Music Player
-Comment=Native BitChord music client
-Exec=bitchord
-Icon=bitchord
+Comment=Native ChordWave music client
+Exec=chordwave
+Icon=chordwave
 Terminal=false
 Categories=AudioVideo;Audio;Player;
 Keywords=music;player;
-StartupWMClass=bitchord
+StartupWMClass=chordwave

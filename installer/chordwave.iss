@@ -1,13 +1,13 @@
-; Inno Setup script for BitChord.
+; Inno Setup script for ChordWave.
 ; Build: cargo build --release, then
-;   iscc installer\bitchord.iss
-; Output: installer\Output\bitchord-setup-<version>.exe
+;   iscc installer\chordwave.iss
+; Output: installer\Output\ChordWave-setup-<version>.exe
 ; ARM64: cargo build --release --target aarch64-pc-windows-msvc, then
-;   iscc /DArm64 installer\bitchord.iss  ->  bitchord-setup-<version>-arm64.exe
+;   iscc /DArm64 installer\chordwave.iss  ->  ChordWave-setup-<version>-arm64.exe
 
-#define AppName "BitChord"
+#define AppName "ChordWave"
 #define AppVersion "2.0.0"
-#define AppExe "bitchord.exe"
+#define AppExe "chordwave.exe"
 #ifdef Arm64
   #define Arch "arm64"
   #define Suffix "-arm64"
@@ -19,12 +19,12 @@
 #endif
 
 [Setup]
-AppId={{6E0B7C4A-2D1F-4C8E-9B3A-7F5D1E2A9C40}
+AppId={{38E876B4-D960-4C2A-86F9-94AC10B42625}
 AppName={#AppName}
 AppVersion={#AppVersion}
-AppPublisher=jackychan4891
-AppPublisherURL=https://github.com/jackychan4891/BitChord-PC-Continued
-AppSupportURL=https://github.com/jackychan4891/BitChord-PC-Continued/issues
+AppPublisher=Rikki53
+AppPublisherURL=https://github.com/Rikki53/BitChord-PC-Continued
+AppSupportURL=https://github.com/Rikki53/BitChord-PC-Continued/issues
 DefaultDirName={autopf}\{#AppName}
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
@@ -34,7 +34,7 @@ PrivilegesRequiredOverridesAllowed=dialog
 ArchitecturesAllowed={#Arch}
 ArchitecturesInstallIn64BitMode={#Arch}
 MinVersion=10.0
-OutputBaseFilename=bitchord-setup-{#AppVersion}{#Suffix}
+OutputBaseFilename=ChordWave-setup-{#AppVersion}{#Suffix}
 Compression=lzma2/ultra
 SolidCompression=yes
 WizardStyle=modern
@@ -65,7 +65,7 @@ Root: HKA; Subkey: "Software\Classes\ytm-rs\shell\open\command"; ValueType: stri
 
 [UninstallDelete]
 ; Installers downloaded by the in-app updater.
-Type: filesandordirs; Name: "{userappdata}\ytm-rs\data\updates"
+Type: filesandordirs; Name: "{userappdata}\chordwave\data\updates"
 
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent

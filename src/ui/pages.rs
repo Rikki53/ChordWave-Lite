@@ -1616,7 +1616,7 @@ fn settings_connections(app: &mut App, ui: &mut Ui) {
         let busy = app.lastfm_busy.load(Ordering::Relaxed);
         let desc = match &app.lastfm_user {
             Some(name) => format!("Scrobbling what you play to {name}'s profile."),
-            None if busy => "Allow BitChord on the Last.fm page that opened in your browser.".to_owned(),
+            None if busy => "Allow ChordWave on the Last.fm page that opened in your browser.".to_owned(),
             None => "Scrobble what you play to your Last.fm profile.".to_owned(),
         };
         let (mut connect, mut disconnect) = (false, false);
@@ -1680,7 +1680,7 @@ fn network(app: &mut App, ui: &mut Ui) {
     use crate::proxy::{self, Setting};
     let same = |a: &Setting, b: &Setting| std::mem::discriminant(a) == std::mem::discriminant(b);
     let mut pick = None;
-    setting_row(ui, "Proxy", Some("Send everything BitChord fetches through a proxy: songs, lyrics, sign-in and Listen together."), |ui| {
+    setting_row(ui, "Proxy", Some("Send everything ChordWave fetches through a proxy: songs, lyrics, sign-in and Listen together."), |ui| {
         let btn = dropdown_button(ui, app.proxy_mode.label(), 220.0, "Proxy");
         egui::Popup::menu(&btn).show(|ui| {
             ui.set_width(220.0);
@@ -1712,7 +1712,7 @@ fn network(app: &mut App, ui: &mut Ui) {
             divider(ui);
             let desc = match proxy::system() {
                 Some(p) => format!("Windows is set to use {}.", proxy::redact(&p)),
-                None => "Windows isn't set to use a proxy, so BitChord connects directly.".to_owned(),
+                None => "Windows isn't set to use a proxy, so ChordWave connects directly.".to_owned(),
             };
             setting_row(ui, "Windows proxy", Some(&desc), |_| {});
         }
@@ -1988,7 +1988,7 @@ pub(super) fn toggle(ui: &mut Ui, on: &mut bool, name: &str) -> egui::Response {
     let resp = resp.on_hover_cursor(egui::CursorIcon::PointingHand);
     let t = theme::anim_bool(ui.ctx(), resp.id.with("t"), value, 0.16);
     let h = theme::anim_bool(ui.ctx(), resp.id.with("h"), resp.hovered(), 0.12);
-    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::RED);
+    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::DEFAULT_ACCENT);
     let fade = if ui.is_enabled() { 1.0 } else { 0.4 };
     let off = theme::glass(0.16 + 0.06 * h);
     ui.painter().rect_filled(rect, 13.0, theme::with_alpha(theme::lerp_color(off, accent, t), fade));
@@ -2027,7 +2027,7 @@ fn seconds_slider(ui: &mut Ui, v: &mut u32, range: std::ops::RangeInclusive<u32>
     resp.widget_info(|| egui::WidgetInfo::slider(ui.is_enabled(), value as f64, name));
     let resp = resp.on_hover_cursor(egui::CursorIcon::PointingHand);
     let h = theme::anim_bool(ui.ctx(), resp.id.with("h"), resp.hovered() || resp.dragged(), 0.12);
-    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::RED);
+    let accent = ui.ctx().data(|d| d.get_temp::<Color32>(egui::Id::unique("accent"))).unwrap_or(theme::DEFAULT_ACCENT);
     let t = (value - lo) as f32 / (hi - lo) as f32;
     let knob = pos2(egui::lerp(track.left()..=track.right(), t), track.center().y);
     ui.painter().rect_filled(track, 2.0, theme::glass(0.15));

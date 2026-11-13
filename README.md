@@ -1,25 +1,24 @@
 <div align="center">
-  <h1>BitChord</h1>
+  <h1>ChordWave</h1>
   <p><strong>A fast, native YouTube Music desktop app — rebuilt in Rust.</strong></p>
   <p>Built with egui and rodio. No Electron, no embedded browser player, and light on memory while playing.</p>
 
   <p>
-    <a href="https://github.com/jackychan4891/BitChord-PC-Continued/releases/latest"><img src="https://img.shields.io/github/v/release/jackychan4891/BitChord-PC-Continued?style=flat-square&color=a855f7&labelColor=0d1117" alt="Latest release"></a>
-    <a href="https://github.com/jackychan4891/BitChord-PC-Continued/releases"><img src="https://img.shields.io/github/downloads/jackychan4891/BitChord-PC-Continued/total?style=flat-square&color=a855f7&labelColor=0d1117" alt="Downloads"></a>
+    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest"><img src="https://img.shields.io/github/v/release/Rikki53/BitChord-PC-Continued?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Latest release"></a>
+    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases"><img src="https://img.shields.io/github/downloads/Rikki53/BitChord-PC-Continued/total?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Downloads"></a>
     <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333?style=flat-square&labelColor=0d1117" alt="Platforms">
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/jackychan4891/BitChord-PC-Continued?style=flat-square&color=333&labelColor=0d1117" alt="License: GPL-3.0"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/Rikki53/BitChord-PC-Continued?style=flat-square&color=333&labelColor=0d1117" alt="License: GPL-3.0"></a>
   </p>
 
   <p>
-    <a href="https://discord.gg/cWQSGjpXM">Discord</a> ·
-    <a href="https://github.com/jackychan4891/BitChord-PC-Continued/releases/latest">Download</a> ·
+    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest">Download</a> ·
     <a href="#features">Features</a> ·
     <a href="#installation">Installation</a> ·
     <a href="#building-from-source">Build from source</a>
   </p>
 </div>
 
-> BitChord is an independent, unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or Apple.
+> ChordWave is an independent, unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or Apple.
 
 ## Screenshots
 
@@ -33,7 +32,7 @@
     <td align="center"><b>Browse</b> — your music, shelves and navigation</td>
   </tr>
   <tr>
-    <td colspan="2"><img src="docs/readme/screenshot-3.png" alt="BitChord interface and playback" width="100%"></td>
+    <td colspan="2"><img src="docs/readme/screenshot-3.png" alt="ChordWave interface and playback" width="100%"></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><b>Desktop experience</b> — native UI, fast playback, and quality controls</td>
@@ -64,32 +63,53 @@
 
 ## Installation
 
-Download the latest build from [Releases](https://github.com/jackychan4891/BitChord-PC-Continued/releases/latest).
+Download the latest build from [Releases](https://github.com/Rikki53/BitChord-PC-Continued/releases/latest).
 
-- **Windows** — download the Windows release asset, extract/install it, and run `bitchord.exe`.
+- **Windows** — download `ChordWave-setup-<version>.exe`, run it, and launch ChordWave. A portable build (`ChordWave-portable-<version>.zip`) is available too: extract it and run `chordwave.exe`.
 - **macOS / Linux** — use the platform release assets when available.
 
 If Windows SmartScreen appears for an unsigned build, choose **More info → Run anyway**.
 
 ## Building from source
 
-You need the [Rust toolchain](https://rustup.rs/).
+You need the [Rust toolchain](https://rustup.rs/). On Windows you also need the MSVC toolchain (Visual Studio Build Tools, C++ workload) for linking.
 
 ```sh
-git clone https://github.com/jackychan4891/BitChord-PC-Continued.git
+git clone https://github.com/Rikki53/BitChord-PC-Continued.git
 cd BitChord-PC-Continued
 cargo build --release
 ```
 
-The built app will be in `target/release/`.
+The built app will be in `target/release/` (`chordwave.exe` on Windows).
 
-Platform builds may require native dependencies (audio/system libraries and toolchain components used by sign-in or platform integrations). Check the repository’s platform docs and release workflow for the exact prerequisites.
+Platform builds may require native dependencies (audio/system libraries and toolchain components used by sign-in or platform integrations).
+
+## Releasing
+
+The in-app updater checks this repo's releases and downloads assets by exact
+name, so a release must use these filenames (with `<version>` like `2.0.1`):
+
+- Windows installer: `ChordWave-setup-<version>.exe` (ARM64: `ChordWave-setup-<version>-arm64.exe`)
+- Windows portable: `ChordWave-portable-<version>.zip` (ARM64: `ChordWave-portable-<version>-arm64.zip`)
+- Linux: `ChordWave-<version>-linux-x86_64.tar.gz`
+- macOS: `ChordWave-setup-<version>-macos-aarch64.dmg`, `ChordWave-setup-<version>-macos-x86_64.dmg`
+
+Build with `cargo build --release`, then package with
+`installer/chordwave.iss` (Inno Setup, Windows), `linux/install.sh` (Linux)
+or `macos/bundle.sh` (macOS). Tag the release `v<version>`.
+
+Package layouts the updater expects:
+
+- Windows portable zip: `chordwave.exe` and `portable.txt` at the zip root.
+- Linux tarball: one top-level folder containing the `chordwave` binary,
+  `install.sh`, `chordwave.desktop` and `chordwave.png`.
+- macOS disk image: `chordwave.app` at the image root.
 
 ## Notes
 
 - Audio and the main interface are native (Rust + egui + rodio). Sign-in and some web flows may open a system webview window.
 - Hi-res/Lossless/Atmos playback depends on configured addon sources and whether a matching, playable copy exists for the selected track.
-- BitChord does not bypass subscriptions, DRM, or regional restrictions. Availability depends on the services and sources you use.
+- ChordWave does not bypass subscriptions, DRM, or regional restrictions. Availability depends on the services and sources you use.
 - Third-party services (YouTube Music, lyrics providers, Discord, Last.fm, Spotify, addon sources) can change behavior over time.
 
 ## Contributing
@@ -98,10 +118,11 @@ Bug reports and pull requests are welcome. Please open an issue with clear repro
 
 ## License
 
-BitChord is licensed under [GPL-3.0](LICENSE).
+ChordWave is licensed under [GPL-3.0](LICENSE).
 
 ## Acknowledgements
 
+- ChordWave Desktop is based on [BitChord-PC-Continued](https://github.com/jackychan4891/BitChord-PC-Continued) by jackychan4891, itself a fork of [BitChord](https://github.com/kushagrasinghx/BitChord) by kushagrasinghx.
 - [egui](https://github.com/emilk/egui) for the interface.
 - [rodio](https://github.com/RustAudio/rodio) and Symphonia for audio playback and decoding.
 - [ytm-rs](https://github.com/grapedjuice/ytm-rs) for the basic rust backend.

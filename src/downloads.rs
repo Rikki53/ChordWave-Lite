@@ -38,12 +38,12 @@ struct State {
 static STATE: LazyLock<RwLock<State>> =
     LazyLock::new(|| RwLock::new(State { index: HashMap::new(), file: PathBuf::new(), folder: default_folder() }));
 
-/// Music\BitChord.
+/// Music\ChordWave.
 pub fn default_folder() -> PathBuf {
     let base = directories::UserDirs::new()
         .and_then(|u| u.audio_dir().map(Path::to_path_buf).or_else(|| Some(u.home_dir().join("Music"))))
         .unwrap_or_else(|| PathBuf::from("."));
-    base.join("BitChord")
+    base.join("ChordWave")
 }
 
 /// Load the index; `folder` is the saved setting (empty for the default).

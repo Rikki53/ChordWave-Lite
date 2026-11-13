@@ -90,8 +90,8 @@ fn main() -> eframe::Result {
     // taskbar, so automated test runs don't pop up over whatever the user is doing.
     let background = std::env::var_os("YTM_BACKGROUND").is_some();
     let mut viewport = egui::ViewportBuilder::default()
-        .with_title("BitChord")
-        .with_app_id("bitchord")
+        .with_title("ChordWave")
+        .with_app_id("chordwave")
         .with_inner_size(DEFAULT_SIZE)
         .with_min_inner_size(MIN_SIZE)
         // Windows: the app draws its own title bar (see `ui::titlebar`).
@@ -122,7 +122,7 @@ fn main() -> eframe::Result {
     };
 
     let run = eframe::run_native(
-        "BitChord",
+        "ChordWave",
         options,
         Box::new(|cc| {
             let ctx = cc.egui_ctx.clone();
@@ -239,8 +239,8 @@ fn hwnd(_: &eframe::CreationContext) -> Option<*mut std::ffi::c_void> {
 /// next to the settings (overwritten each launch).
 fn init_logging() {
     let mut builder = env_logger::Builder::from_env(
-        // A test build can be made more talkative: YTM_DEFAULT_LOG=warn,bitchord=debug cargo build.
-        env_logger::Env::default().default_filter_or(option_env!("YTM_DEFAULT_LOG").unwrap_or("warn,bitchord=info")),
+        // A test build can be made more talkative: YTM_DEFAULT_LOG=warn,chordwave=debug cargo build.
+        env_logger::Env::default().default_filter_or(option_env!("YTM_DEFAULT_LOG").unwrap_or("warn,chordwave=info")),
     );
     // Dev hook: YTM_LOG=<path> logs there (test runs beside a running copy).
     if let Some(path) = std::env::var_os("YTM_LOG") {
@@ -251,8 +251,8 @@ fn init_logging() {
         let dir = data_dir();
         let _ = std::fs::create_dir_all(&dir);
         // The last run's log too: reopening the app after a problem would otherwise wipe it.
-        let _ = std::fs::rename(dir.join("ytm-rs.log"), dir.join("ytm-rs.prev.log"));
-        if let Ok(file) = std::fs::File::create(dir.join("ytm-rs.log")) {
+        let _ = std::fs::rename(dir.join("chordwave.log"), dir.join("chordwave.prev.log"));
+        if let Ok(file) = std::fs::File::create(dir.join("chordwave.log")) {
             builder.target(env_logger::Target::Pipe(Box::new(file)));
         }
     }
@@ -268,5 +268,5 @@ fn data_dir() -> std::path::PathBuf {
     if let Some(dir) = update::portable_dir() {
         return dir.join("data");
     }
-    directories::ProjectDirs::from("", "", "ytm-rs").expect("no home directory").data_dir().to_path_buf()
+    directories::ProjectDirs::from("", "", "chordwave").expect("no home directory").data_dir().to_path_buf()
 }

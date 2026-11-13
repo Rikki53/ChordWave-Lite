@@ -1,5 +1,5 @@
 #!/bin/sh
-# Install bitchord for this user: the app in ~/.local/lib/bitchord, a `bitchord` command in
+# Install chordwave for this user: the app in ~/.local/lib/chordwave, a `chordwave` command in
 # ~/.local/bin, and a menu entry with its icon. Installed this way, the app updates
 # itself. Libraries it needs that are missing get installed with the system's package
 # manager (that step asks for your password).
@@ -9,10 +9,10 @@
 set -e
 
 data=${XDG_DATA_HOME:-$HOME/.local/share}
-lib=$HOME/.local/lib/bitchord
+lib=$HOME/.local/lib/chordwave
 bin=$HOME/.local/bin
-desktop=$data/applications/bitchord.desktop
-icon=$data/icons/hicolor/256x256/apps/bitchord.png
+desktop=$data/applications/chordwave.desktop
+icon=$data/icons/hicolor/256x256/apps/chordwave.png
 
 refresh() {
     update-desktop-database -q "$data/applications" 2>/dev/null || true
@@ -22,39 +22,39 @@ refresh() {
 if [ "$1" = "--uninstall" ]; then
     rm -rf "$lib"
     rm -f "$desktop" "$icon"
-    [ -L "$bin/bitchord" ] && rm -f "$bin/bitchord"
+    [ -L "$bin/chordwave" ] && rm -f "$bin/chordwave"
     refresh
-    echo "bitchord is uninstalled. Settings are still in $data/ytm-rs, and sign-ins in your keyring."
+    echo "chordwave is uninstalled. Settings are still in $data/chordwave, and sign-ins in your keyring."
     exit 0
 fi
 
 # The files to install: beside this script, or (run from the web) the latest release.
 here=$(cd "$(dirname "$0")" && pwd)
-[ -f "$here/bitchord" ] || { echo "Run install.sh from the extracted download."; exit 1; }
+[ -f "$here/chordwave" ] || { echo "Run install.sh from the extracted download."; exit 1; }
 
 mkdir -p "$lib" "$bin" "$data/applications" "$(dirname "$icon")"
 # Put the new binary next to the old one and rename it over, so a copy that's
 # running keeps going.
-cp "$here/bitchord" "$lib/bitchord.new"
-chmod 755 "$lib/bitchord.new"
-mv -f "$lib/bitchord.new" "$lib/bitchord"
+cp "$here/chordwave" "$lib/chordwave.new"
+chmod 755 "$lib/chordwave.new"
+mv -f "$lib/chordwave.new" "$lib/chordwave"
 cp "$here/install.sh" "$lib/install.sh"
 chmod 755 "$lib/install.sh"
-echo "Installed by install.sh. This file lets bitchord update itself." > "$lib/install.txt"
-ln -sf "$lib/bitchord" "$bin/bitchord"
-sed "s|^Exec=.*|Exec=$lib/bitchord|" "$here/bitchord.desktop" > "$desktop"
-cp "$here/bitchord.png" "$icon"
+echo "Installed by install.sh. This file lets chordwave update itself." > "$lib/install.txt"
+ln -sf "$lib/chordwave" "$bin/chordwave"
+sed "s|^Exec=.*|Exec=$lib/chordwave|" "$here/chordwave.desktop" > "$desktop"
+cp "$here/chordwave.png" "$icon"
 refresh
 
 # Libraries: WebKitGTK (sign-in, lyrics), GTK, the tray's appindicator and ALSA.
-missing=$(ldd "$lib/bitchord" 2>/dev/null | awk '/not found/ { print $1 }' | tr '\n' ' ')
+missing=$(ldd "$lib/chordwave" 2>/dev/null | awk '/not found/ { print $1 }' | tr '\n' ' ')
 # (Loaded at run time, so ldd doesn't list it. ldconfig is in /sbin, off a user's PATH on Debian.)
 ldconfig=$(command -v ldconfig || echo /sbin/ldconfig)
 appindicator=$("$ldconfig" -p 2>/dev/null | grep -c 'libayatana-appindicator3\|libappindicator3' || true)
 if [ -n "$missing" ] || [ "$appindicator" = 0 ]; then
     sudo=""
     [ "$(id -u)" = 0 ] || sudo=sudo
-    echo "Installing the libraries bitchord needs${missing:+ ($missing)}"
+    echo "Installing the libraries chordwave needs${missing:+ ($missing)}"
     if command -v apt-get >/dev/null; then
         $sudo apt-get install -y libwebkit2gtk-4.1-0 libgtk-3-0 libayatana-appindicator3-1 libasound2
     elif command -v dnf >/dev/null; then
@@ -68,5 +68,5 @@ if [ -n "$missing" ] || [ "$appindicator" = 0 ]; then
     fi
 fi
 
-echo "bitchord is installed. Open BitChord from your app menu, or run bitchord."
+echo "chordwave is installed. Open ChordWave from your app menu, or run chordwave."
 echo "To uninstall: $lib/install.sh --uninstall"

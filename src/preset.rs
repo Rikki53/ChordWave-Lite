@@ -10,7 +10,7 @@ use egui::Color32;
 use serde::Deserialize;
 
 /// Id of the built-in look (the app's own design, not a Better Lyrics theme).
-pub const DEFAULT_ID: &str = "ytm-rs";
+pub const DEFAULT_ID: &str = "chordwave";
 
 #[derive(Clone, Copy, PartialEq, Default, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -366,7 +366,7 @@ impl Preset {
     fn builtin() -> Self {
         Self {
             id: DEFAULT_ID.into(),
-            name: "BitChord".into(),
+            name: "ChordWave".into(),
             blurb: "The app's own look: animated album-art background, left-aligned karaoke lyrics.".into(),
             accent: "cover".into(),
             ..Default::default()

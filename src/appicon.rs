@@ -14,25 +14,12 @@ pub struct Variant {
     ico: &'static [u8],
 }
 
-macro_rules! variant {
-    ($id:literal, $name:literal) => {
-        Variant { id: $id, name: $name, ico: include_bytes!(concat!("../assets/icon/variants/", $id, ".ico")) }
-    };
-}
-
 pub const CLASSIC: &str = "classic";
 
+/// The one app icon: the ChordWave mark. (Upstream shipped nine variant
+/// renditions of its own mark; the rebrand keeps a single identity.)
 pub static ALL: &[Variant] = &[
-    Variant { id: CLASSIC, name: "BitChord", ico: include_bytes!("../assets/icon/icon.ico") },
-    variant!("official", "Original"),
-    variant!("smilering", "Smile ring"),
-    variant!("gear", "Rust gear"),
-    variant!("wave", "Waveform"),
-    variant!("vinyl", "Record"),
-    variant!("lyrics", "Lit line"),
-    variant!("duet", "Duet"),
-    variant!("kawarp", "Warp"),
-    variant!("fluent", "Fluent"),
+    Variant { id: CLASSIC, name: "ChordWave", ico: include_bytes!("../assets/icon/icon.ico") },
 ];
 
 pub fn get(id: &str) -> &'static Variant {
@@ -222,7 +209,7 @@ mod shortcuts {
     /// Returns the link when it had to be written.
     fn start_menu(exe: &Path, icon: &Path) -> anyhow::Result<Option<PathBuf>> {
         let Some(dir) = known_folder(&FOLDERID_Programs) else { return Ok(None) };
-        let lnk = dir.join("BitChord.lnk");
+        let lnk = dir.join("ChordWave.lnk");
         if lnk.exists() && !points_elsewhere(&lnk, exe) {
             // The link is ours: only the icon may need catching up with the theme.
             return Ok(update(&lnk, exe, icon)?.then_some(lnk));
@@ -234,7 +221,7 @@ mod shortcuts {
             if let Some(dir) = exe.parent() {
                 link.SetWorkingDirectory(&HSTRING::from(dir.as_os_str()))?;
             }
-            link.SetDescription(&HSTRING::from("BitChord"))?;
+            link.SetDescription(&HSTRING::from("ChordWave"))?;
             link.SetIconLocation(&HSTRING::from(icon.as_os_str()), 0)?;
             let file: IPersistFile = link.cast()?;
             file.Save(&HSTRING::from(lnk.as_os_str()), true)?;
@@ -368,7 +355,7 @@ mod tests {
 
     #[test]
     fn picks_the_smallest_entry_that_fits() {
-        let v = get("gear");
+        let v = get("classic");
         let w = |png: &[u8]| image::load_from_memory(png).unwrap().width();
         assert_eq!(w(v.png(16)), 16);
         assert_eq!(w(v.png(50)), 64);

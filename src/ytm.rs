@@ -1800,7 +1800,7 @@ mod tests {
     }
 
     /// Asks the Android VR client for a real album (no sign-in). Run alone:
-    /// `cargo test --bin ytm-rs -- --ignored ytm::tests::album_songs_live --exact`
+    /// `cargo test --bin chordwave -- --ignored ytm::tests::album_songs_live --exact`
     #[tokio::test]
     #[ignore]
     async fn album_songs_live() {
@@ -2031,7 +2031,7 @@ mod tests {
     }
 
     /// A signed-out search for the songs of a few music videos. Run alone:
-    /// `cargo test --bin ytm-rs -- --ignored ytm::tests::searched_song_live --exact --nocapture`
+    /// `cargo test --bin chordwave -- --ignored ytm::tests::searched_song_live --exact --nocapture`
     #[tokio::test]
     #[ignore]
     async fn searched_song_live() {
