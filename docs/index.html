@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>chordwave: a fast, native YouTube Music desktop app for Windows, macOS and Linux</title>
-<meta name="description" content="chordwave is a free, open-source YouTube Music desktop client written in Rust for Windows, macOS and Linux. A 9 MB download with word-by-word synced lyrics, romanization, 26 themes and no Electron.">
+<meta name="description" content="chordwave is a free, open-source YouTube Music desktop client written in Rust for Windows, macOS and Linux. A 13 MB download with word-by-word synced lyrics, romanization, 26 themes and no Electron.">
 <meta name="keywords" content="YouTube Music desktop app, YouTube Music client, YouTube Music Windows, YouTube Music Mac, YouTube Music Linux, native YouTube Music player, Rust music player, egui, synced lyrics, romanized lyrics, Electron alternative, open source">
 <link rel="canonical" href="https://rikki53.github.io/BitChord-PC-Continued/">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -87,7 +87,7 @@
         { "@type": "Question", "name": "Is chordwave free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. chordwave is free and open source under the GPL-3.0 license. There are no ads, accounts or paid tiers in the app itself." } },
         { "@type": "Question", "name": "Is chordwave an official YouTube Music app?", "acceptedAnswer": { "@type": "Answer", "text": "No. chordwave is an unofficial client built by an independent developer. It talks to the same services music.youtube.com uses, so changes on YouTube's side can occasionally affect playback, sign-in or lyrics." } },
         { "@type": "Question", "name": "Do I need YouTube Premium to use chordwave?", "acceptedAnswer": { "@type": "Answer", "text": "No. You can browse, search and play without signing in. Signing in unlocks your home feed, library, likes and history. If your account has Premium, Premium-only songs play natively and everything plays at 256 kbps." } },
-        { "@type": "Question", "name": "Does chordwave run on macOS or Linux?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every release has a Windows installer, a macOS disk image for Apple silicon and Intel (macOS 11 or later), and a Linux build with a one-line installer. Each platform also has a portable download." } },
+        { "@type": "Question", "name": "Does chordwave run on macOS or Linux?", "acceptedAnswer": { "@type": "Answer", "text": "The first release (v2.1.0) is Windows-only. macOS and Linux builds are coming: a disk image for Apple silicon and Intel (macOS 11 or later), and a Linux build with a one-line installer." } },
         { "@type": "Question", "name": "Where do the synced lyrics come from?", "acceptedAnswer": { "@type": "Answer", "text": "Synced lyrics come from every source the Better Lyrics extension uses, including Better Lyrics, Unison, Musixmatch and LRCLib. If one has nothing for a song, the next takes over. Romanization and translations for Japanese, Korean, Chinese and other non-Latin lyrics come from the lyrics when they include them, otherwise from Unison or Google Translate." } },
         { "@type": "Question", "name": "How does chordwave update?", "acceptedAnswer": { "@type": "Answer", "text": "The installed app checks GitHub for new releases, downloads them in the background and installs when you close it. You can also restart to update right away, or turn updates off in Settings." } }
       ]
@@ -139,7 +139,7 @@
       <span class="kline"><span class="kw">without</span> <span class="kw">the</span> <span class="kw">browser.</span></span>
     </h1>
     <p class="hero__sub">
-      chordwave is a native YouTube Music app for Windows, macOS and Linux, written in Rust. Word-by-word synced lyrics, romanization and 26 themes in a 9&nbsp;MB download that draws nothing at all when you aren't looking.
+      chordwave is a native YouTube Music app for Windows, macOS and Linux, written in Rust. Word-by-word synced lyrics, romanization and 26 themes in a 13&nbsp;MB download that draws nothing at all when you aren't looking.
     </p>
     <div class="hero__cta">
       <a class="btn btn--primary btn--lg" href="#download" data-dl>
@@ -164,7 +164,7 @@
 <!-- ============ STATS ============ -->
 <section class="stats" aria-label="By the numbers">
   <div class="stats__grid">
-    <div class="stat"><span class="stat__num"><b data-tick="9">0</b><small>MB</small></span><span class="stat__label">download</span></div>
+    <div class="stat"><span class="stat__num"><b data-tick="13">0</b><small>MB</small></span><span class="stat__label">download</span></div>
     <div class="stat"><span class="stat__num"><b data-tick="94" data-prefix="~">0</b><small>MB</small></span><span class="stat__label">memory while playing</span></div>
     <div class="stat"><span class="stat__num"><b data-tick="0">0</b><small>fps</small></span><span class="stat__label">drawn when idle</span></div>
     <div class="stat"><span class="stat__num"><b data-tick="26">0</b></span><span class="stat__label">community themes</span></div>
@@ -581,6 +581,11 @@
     <h2 id="download-title">Get chordwave</h2>
     <p class="dl__ver"><span data-version>v0.2.25</span> · <span data-date>October 2026</span> · Free and open source</p>
 
+    <figure class="dl__shot">
+      <img src="img/windows-hero.webp" width="1920" height="1280" alt="ChordWave running on Windows 11: your library with album covers and a song playing" loading="lazy">
+      <figcaption>ChordWave on Windows 11</figcaption>
+    </figure>
+
     <div class="platforms">
       <a class="platform" href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest" data-os="windows" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.4 4.5v7H3zM11.4 4.36 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.36z"/></svg>
@@ -590,12 +595,12 @@
       <a class="platform" href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest" data-os="macos" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.55.02-2.97.9-3.77 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.05-.51 2.68-1.27z"/></svg>
         <b>macOS</b>
-        <small><span data-size="macos">Disk image</span> · 11 or later</small>
+        <small><span data-size="macos">Coming soon</span></small>
       </a>
       <a class="platform" href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest" data-os="linux" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c-1.9 0-3.2 1.7-3.2 4.1 0 1.2.3 2.1-.4 3.3-.8 1.4-2.6 3.6-2.6 6.3 0 .7.1 1.3.4 1.9-.8.4-1.9.8-1.9 1.8 0 1.3 1.9 1.4 3.6 2 1.1.4 1.9.6 2.6.1.3-.2.6-.3 1.5-.3s1.2.1 1.5.3c.7.5 1.5.3 2.6-.1 1.7-.6 3.6-.7 3.6-2 0-1-1.1-1.4-1.9-1.8.3-.6.4-1.2.4-1.9 0-2.7-1.8-4.9-2.6-6.3-.7-1.2-.4-2.1-.4-3.3C15.2 3.7 13.9 2 12 2zm-1.4 4.2c.4 0 .7.5.7 1s-.3 1-.7 1-.7-.5-.7-1 .3-1 .7-1zm2.8 0c.4 0 .7.5.7 1s-.3 1-.7 1-.7-.5-.7-1 .3-1 .7-1zM12 9c.9 0 2 .6 2 1s-1.1 1-2 1-2-.6-2-1 1.1-1 2-1z"/></svg>
         <b>Linux</b>
-        <small><span data-size="linux">x86_64</span> · one-line install</small>
+        <small><span data-size="linux">Coming soon</span></small>
       </a>
     </div>
     <p class="dl__small">Every platform also has a portable download. chordwave updates itself on all of them. <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest" rel="noopener">All downloads</a></p>
@@ -618,7 +623,7 @@
     <details open><summary>Is chordwave free?</summary><div class="faq__a"><p>Yes. chordwave is free and open source under the GPL-3.0 license. The app has no ads, accounts or paid tiers of its own.</p></div></details>
     <details><summary>Is it an official YouTube Music app?</summary><div class="faq__a"><p>No. chordwave is an unofficial client built by an independent developer. It talks to the same services music.youtube.com uses, so changes on YouTube's side can occasionally affect playback, sign-in or lyrics.</p></div></details>
     <details><summary>Do I need YouTube Premium?</summary><div class="faq__a"><p>No. You can browse, search and play without signing in. Signing in unlocks your home feed, library, likes and history. If your account has Premium, Premium-only songs play natively and everything plays at 256 kbps.</p></div></details>
-    <details><summary>Does it run on macOS or Linux?</summary><div class="faq__a"><p>Yes. Every release has a Windows installer, a macOS disk image for Apple silicon and Intel (macOS 11 or later), and a Linux build with a one-line installer. Each platform also has a portable download. The macOS app isn't notarized yet, so the first time, right-click it and choose Open.</p></div></details>
+    <details><summary>Does it run on macOS or Linux?</summary><div class="faq__a"><p>The first release (v2.1.0) is Windows-only. macOS and Linux builds are coming: a disk image for Apple silicon and Intel (macOS 11 or later), and a Linux build with a one-line installer. Each platform will also have a portable download.</p></div></details>
     <details><summary>How does signing in work?</summary><div class="faq__a"><p>Open Settings → Sign in with Google. Google's own sign-in page opens in a temporary system webview window (WebView2 on Windows), and the session stays on your computer, in Credential Manager, the Keychain or your keyring. The player itself never runs in a webview.</p></div></details>
     <details><summary>Where do the lyrics come from?</summary><div class="faq__a"><p>Synced lyrics come from every source the Better Lyrics extension uses: Better Lyrics, Unison, Musixmatch, LRCLib and others. If one has nothing for a song, the next takes over. Romanization and translations come from the lyrics when they include them, otherwise from Unison or Google Translate. Machine translations can have rough spots.</p></div></details>
     <details><summary>How does it update?</summary><div class="faq__a"><p>The installed app checks GitHub for new releases, downloads them in the background and installs when you close it. Choose Restart to update to install right away, or turn updates off in Settings → Updates.</p></div></details>
