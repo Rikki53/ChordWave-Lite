@@ -6,7 +6,7 @@
 ;   iscc /DArm64 installer\chordwave.iss  ->  ChordWave-setup-<version>-arm64.exe
 
 #define AppName "ChordWave"
-#define AppVersion "2.0.0"
+#define AppVersion "2.1.0"
 #define AppExe "chordwave.exe"
 #ifdef Arm64
   #define Arch "arm64"
