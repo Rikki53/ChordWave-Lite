@@ -1,4 +1,4 @@
-This is the portable chordwave. While this file sits next to chordwave.exe, the app keeps
+This is the portable ChordWave Lite. While this file sits next to chordwave.exe, the app keeps
 its settings and caches in the "data" folder here, and updates itself in this folder.
 
-Delete this file to use the normal location (%APPDATA%\ytm-rs) instead.
+Delete this file to use the normal location (%APPDATA%\chordwave\data) instead.

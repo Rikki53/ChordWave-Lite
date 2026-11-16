@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=ChordWave
+Name=ChordWave Lite
 GenericName=Music Player
-Comment=Native ChordWave music client
+Comment=Native ChordWave Lite music client
 Exec=chordwave
 Icon=chordwave
 Terminal=false

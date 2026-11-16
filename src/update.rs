@@ -82,7 +82,7 @@ fn asset_name(version: &str) -> String {
     let arch = std::env::consts::ARCH;
     if cfg!(target_os = "linux") {
         let kind = if portable { "portable-" } else { "" };
-        return format!("ChordWave-{kind}{version}-linux-{arch}.tar.gz");
+        return format!("ChordWave-Lite-{kind}{version}-linux-{arch}.tar.gz");
     }
     // ARM64 Windows builds have their own assets; x64 keeps the original names.
     let (suffix, setup) = if cfg!(target_os = "macos") {
@@ -90,7 +90,7 @@ fn asset_name(version: &str) -> String {
     } else {
         (if cfg!(target_arch = "aarch64") { "-arm64" } else { "" }.to_owned(), "exe")
     };
-    if portable { format!("ChordWave-portable-{version}{suffix}.zip") } else { format!("ChordWave-setup-{version}{suffix}.{setup}") }
+    if portable { format!("ChordWave-Lite-portable-{version}{suffix}.zip") } else { format!("ChordWave-Lite-setup-{version}{suffix}.{setup}") }
 }
 
 /// The portable build's folder: the download ships a `portable.txt` beside the exe
@@ -182,7 +182,7 @@ impl Updater {
         None
     }
 
-    /// How many times ChordWave has been downloaded: every release asset's GitHub download
+    /// How many times ChordWave Lite has been downloaded: every release asset's GitHub download
     /// count added up (installers, plus the copies the updater fetched). Fetched in the
     /// background the first time it's asked for; `None` until it arrives.
     pub fn downloads(&self) -> Option<u64> {
@@ -448,9 +448,9 @@ fn open_dmg(dmg: &Path, dir: &Path) -> anyhow::Result<PathBuf> {
     std::fs::create_dir_all(&mnt)?;
     let attached = std::process::Command::new("hdiutil").args(["attach", "-nobrowse", "-readonly", "-noautoopen", "-quiet", "-mountpoint"]).arg(&mnt).arg(dmg).status()?;
     anyhow::ensure!(attached.success(), "couldn't open {}", dmg.display());
-    let copied = std::process::Command::new("ditto").arg(mnt.join("chordwave.app")).arg(dir.join("chordwave.app")).status();
+    let copied = std::process::Command::new("ditto").arg(mnt.join("ChordWave Lite.app")).arg(dir.join("ChordWave Lite.app")).status();
     let _ = std::process::Command::new("hdiutil").args(["detach", "-quiet"]).arg(&mnt).status();
-    let exe = dir.join("chordwave.app/Contents/MacOS/chordwave");
+    let exe = dir.join("ChordWave Lite.app/Contents/MacOS/chordwave");
     anyhow::ensure!(copied.is_ok_and(|s| s.success()) && exe.exists(), "couldn't copy the app out of {}", dmg.display());
     Ok(exe)
 }
@@ -481,7 +481,7 @@ fn unzip_exe(zip: &Path, dir: &Path) -> anyhow::Result<PathBuf> {
     #[cfg(not(windows))]
     let exe = std::fs::read_dir(dir)?
         .flatten()
-        .flat_map(|e| [e.path().join("chordwave"), e.path().join("chordwave.app/Contents/MacOS/chordwave")])
+        .flat_map(|e| [e.path().join("chordwave"), e.path().join("ChordWave Lite.app/Contents/MacOS/chordwave")])
         .find(|p| p.is_file())
         .unwrap_or_else(|| dir.join("chordwave"));
     anyhow::ensure!(status.success() && exe.exists(), "couldn't unpack {}", zip.display());

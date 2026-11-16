@@ -19,7 +19,7 @@ const TEXT_FAINT_LIGHT: Color32 = Color32::from_rgb(124, 118, 132);
 /// Error colour (also the old default accent).
 pub const RED: Color32 = Color32::from_rgb(0xFA, 0x58, 0x6A);
 
-/// Default accent until a cover provides one (ChordWave mint).
+/// Default accent until a cover provides one (ChordWave Lite mint).
 pub const DEFAULT_ACCENT: Color32 = Color32::from_rgb(0x5D, 0xF0, 0xCB);
 
 /// Light or dark, as the app picked it for what's being drawn (see `set_mode`): the

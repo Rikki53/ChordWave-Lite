@@ -90,7 +90,7 @@ fn main() -> eframe::Result {
     // taskbar, so automated test runs don't pop up over whatever the user is doing.
     let background = std::env::var_os("YTM_BACKGROUND").is_some();
     let mut viewport = egui::ViewportBuilder::default()
-        .with_title("ChordWave")
+        .with_title("ChordWave Lite")
         .with_app_id("chordwave")
         .with_inner_size(DEFAULT_SIZE)
         .with_min_inner_size(MIN_SIZE)
@@ -122,7 +122,7 @@ fn main() -> eframe::Result {
     };
 
     let run = eframe::run_native(
-        "ChordWave",
+        "ChordWave Lite",
         options,
         Box::new(|cc| {
             let ctx = cc.egui_ctx.clone();

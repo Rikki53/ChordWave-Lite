@@ -1,4 +1,4 @@
-/* chordwave site. No framework, no build step. */
+/* chordwave lite site. No framework, no build step. */
 (() => {
   "use strict";
 
@@ -517,9 +517,11 @@ void main(){
     const assets = rel.assets || [];
     const find = (re) => assets.find((a) => re.test(a.name));
     const builds = {
-      windows: { x86: find(/setup-[\d.]+\.exe$/i), arm: find(/setup-[\d.]+-arm64\.exe$/i) },
-      macos: { arm: find(/setup-[\d.]+-macos-aarch64\.dmg$/i), x86: find(/setup-[\d.]+-macos-x86_64\.dmg$/i) },
-      linux: { x86: find(/^chordwave-[\d.]+-linux-x86_64\.tar\.gz$/i) },
+      // The v2.1.1 release carries each file under both names (see README § Releasing):
+      // prefer the ChordWave Lite name, fall back to the old one.
+      windows: { x86: find(/lite-setup-[\d.]+\.exe$/i) || find(/setup-[\d.]+\.exe$/i), arm: find(/lite-setup-[\d.]+-arm64\.exe$/i) || find(/setup-[\d.]+-arm64\.exe$/i) },
+      macos: { arm: find(/lite-setup-[\d.]+-macos-aarch64\.dmg$/i) || find(/setup-[\d.]+-macos-aarch64\.dmg$/i), x86: find(/lite-setup-[\d.]+-macos-x86_64\.dmg$/i) || find(/setup-[\d.]+-macos-x86_64\.dmg$/i) },
+      linux: { x86: find(/^chordwave-lite-[\d.]+-linux-x86_64\.tar\.gz$/i) || find(/^chordwave-[\d.]+-linux-x86_64\.tar\.gz$/i) },
     };
     const show = (os, file) => {
       if (!file) return;

@@ -418,7 +418,7 @@ pub struct App {
     theme_id: String,
     /// Preset whose chrome (glass, corner radius) is installed in the egui style.
     chrome_applied: Option<String>,
-    /// Light or dark pages (the ChordWave theme's; see `light_pages`).
+    /// Light or dark pages (the ChordWave Lite theme's; see `light_pages`).
     appearance: theme::Appearance,
     anim_bg: bool,
     reactive_bg: bool,
@@ -1064,7 +1064,7 @@ impl App {
         c
     }
 
-    /// Whether pages draw light: only the ChordWave theme has a light mode, and it follows
+    /// Whether pages draw light: only the ChordWave Lite theme has a light mode, and it follows
     /// Settings › Appearance › Mode.
     fn light_pages(&self, ctx: &egui::Context) -> bool {
         self.look().id == crate::preset::DEFAULT_ID && self.appearance.is_light(ctx)

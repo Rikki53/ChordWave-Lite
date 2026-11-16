@@ -1,12 +1,12 @@
-; Inno Setup script for ChordWave.
+; Inno Setup script for ChordWave Lite.
 ; Build: cargo build --release, then
 ;   iscc installer\chordwave.iss
-; Output: installer\Output\ChordWave-setup-<version>.exe
+; Output: installer\Output\ChordWave-Lite-setup-<version>.exe
 ; ARM64: cargo build --release --target aarch64-pc-windows-msvc, then
-;   iscc /DArm64 installer\chordwave.iss  ->  ChordWave-setup-<version>-arm64.exe
+;   iscc /DArm64 installer\chordwave.iss  ->  ChordWave-Lite-setup-<version>-arm64.exe
 
-#define AppName "ChordWave"
-#define AppVersion "2.1.0"
+#define AppName "ChordWave Lite"
+#define AppVersion "2.1.1"
 #define AppExe "chordwave.exe"
 #ifdef Arm64
   #define Arch "arm64"
@@ -34,7 +34,7 @@ PrivilegesRequiredOverridesAllowed=dialog
 ArchitecturesAllowed={#Arch}
 ArchitecturesInstallIn64BitMode={#Arch}
 MinVersion=10.0
-OutputBaseFilename=ChordWave-setup-{#AppVersion}{#Suffix}
+OutputBaseFilename=ChordWave-Lite-setup-{#AppVersion}{#Suffix}
 Compression=lzma2/ultra
 SolidCompression=yes
 WizardStyle=modern

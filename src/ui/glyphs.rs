@@ -1,4 +1,4 @@
-//! ChordWave's own icon set, drawn from the mobile app's icon path data.
+//! ChordWave Lite's own icon set, drawn from the mobile app's icon path data.
 //!
 //! The paths come from the desktop app's shared icon file and are baked to PNG at
 //! 256px (Chromium's own rasteriser, so the arcs and the two-contour outlines are

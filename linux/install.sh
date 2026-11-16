@@ -1,5 +1,5 @@
 #!/bin/sh
-# Install chordwave for this user: the app in ~/.local/lib/chordwave, a `chordwave` command in
+# Install ChordWave Lite for this user: the app in ~/.local/lib/chordwave, a `chordwave` command in
 # ~/.local/bin, and a menu entry with its icon. Installed this way, the app updates
 # itself. Libraries it needs that are missing get installed with the system's package
 # manager (that step asks for your password).
@@ -24,7 +24,7 @@ if [ "$1" = "--uninstall" ]; then
     rm -f "$desktop" "$icon"
     [ -L "$bin/chordwave" ] && rm -f "$bin/chordwave"
     refresh
-    echo "chordwave is uninstalled. Settings are still in $data/chordwave, and sign-ins in your keyring."
+    echo "ChordWave Lite is uninstalled. Settings are still in $data/chordwave, and sign-ins in your keyring."
     exit 0
 fi
 
@@ -40,7 +40,7 @@ chmod 755 "$lib/chordwave.new"
 mv -f "$lib/chordwave.new" "$lib/chordwave"
 cp "$here/install.sh" "$lib/install.sh"
 chmod 755 "$lib/install.sh"
-echo "Installed by install.sh. This file lets chordwave update itself." > "$lib/install.txt"
+echo "Installed by install.sh. This file lets ChordWave Lite update itself." > "$lib/install.txt"
 ln -sf "$lib/chordwave" "$bin/chordwave"
 sed "s|^Exec=.*|Exec=$lib/chordwave|" "$here/chordwave.desktop" > "$desktop"
 cp "$here/chordwave.png" "$icon"
@@ -54,7 +54,7 @@ appindicator=$("$ldconfig" -p 2>/dev/null | grep -c 'libayatana-appindicator3\|l
 if [ -n "$missing" ] || [ "$appindicator" = 0 ]; then
     sudo=""
     [ "$(id -u)" = 0 ] || sudo=sudo
-    echo "Installing the libraries chordwave needs${missing:+ ($missing)}"
+    echo "Installing the libraries ChordWave Lite needs${missing:+ ($missing)}"
     if command -v apt-get >/dev/null; then
         $sudo apt-get install -y libwebkit2gtk-4.1-0 libgtk-3-0 libayatana-appindicator3-1 libasound2
     elif command -v dnf >/dev/null; then
@@ -68,5 +68,5 @@ if [ -n "$missing" ] || [ "$appindicator" = 0 ]; then
     fi
 fi
 
-echo "chordwave is installed. Open ChordWave from your app menu, or run chordwave."
+echo "ChordWave Lite is installed. Open ChordWave Lite from your app menu, or run chordwave."
 echo "To uninstall: $lib/install.sh --uninstall"

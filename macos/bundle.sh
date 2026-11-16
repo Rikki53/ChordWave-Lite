@@ -1,9 +1,9 @@
 #!/bin/sh
-# Make chordwave.app from a built binary:
-#   macos/bundle.sh target/release/chordwave 0.2.24 out [portable]
+# Make ChordWave Lite.app from a built binary:
+#   macos/bundle.sh target/release/chordwave 2.1.1 out [portable]
 # With `portable`, the app keeps its data in a folder beside itself (see portable.txt).
 # The app is signed ad hoc (there's no Developer ID), so macOS asks before its first
-# launch: right-click it and pick Open, or run `xattr -dr com.apple.quarantine chordwave.app`.
+# launch: right-click it and pick Open, or run `xattr -dr com.apple.quarantine "ChordWave Lite.app"`.
 set -e
 
 bin=$1
@@ -13,7 +13,7 @@ kind=$4
 [ -n "$bin" ] && [ -n "$version" ] && [ -n "$out" ] || { echo "usage: $0 <binary> <version> <out dir>"; exit 1; }
 here=$(cd "$(dirname "$0")" && pwd)
 icon="$here/../assets/icon/icon.png"
-app="$out/chordwave.app"
+app="$out/ChordWave Lite.app"
 
 rm -rf "$app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"

@@ -1,6 +1,6 @@
 {
-  "name": "chordwave",
-  "short_name": "chordwave",
+  "name": "chordwave lite",
+  "short_name": "chordwave lite",
   "description": "A fast, native YouTube Music desktop app written in Rust.",
   "start_url": "./",
   "display": "browser",
