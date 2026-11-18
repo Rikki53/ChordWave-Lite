@@ -479,7 +479,7 @@ void main(){
   }));
 
   /* ---------------- live GitHub data ---------------- */
-  const REPO = "Rikki53/BitChord-PC-Continued";
+  const REPO = "Rikki53/ChordWave-Lite";
   const cached = (key, url) => {
     try {
       const hit = JSON.parse(sessionStorage.getItem(key) || "null");

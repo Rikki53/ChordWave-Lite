@@ -4,14 +4,14 @@
   <p>Built with egui and rodio. No Electron, no embedded browser player, and light on memory while playing.</p>
 
   <p>
-    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest"><img src="https://img.shields.io/github/v/release/Rikki53/BitChord-PC-Continued?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Latest release"></a>
-    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases"><img src="https://img.shields.io/github/downloads/Rikki53/BitChord-PC-Continued/total?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Downloads"></a>
+    <a href="https://github.com/Rikki53/ChordWave-Lite/releases/latest"><img src="https://img.shields.io/github/v/release/Rikki53/ChordWave-Lite?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Latest release"></a>
+    <a href="https://github.com/Rikki53/ChordWave-Lite/releases"><img src="https://img.shields.io/github/downloads/Rikki53/ChordWave-Lite/total?style=flat-square&color=5DF0CB&labelColor=0d1117" alt="Downloads"></a>
     <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333?style=flat-square&labelColor=0d1117" alt="Platforms">
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/Rikki53/BitChord-PC-Continued?style=flat-square&color=333&labelColor=0d1117" alt="License: GPL-3.0"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/Rikki53/ChordWave-Lite?style=flat-square&color=333&labelColor=0d1117" alt="License: GPL-3.0"></a>
   </p>
 
   <p>
-    <a href="https://github.com/Rikki53/BitChord-PC-Continued/releases/latest">Download</a> ·
+    <a href="https://github.com/Rikki53/ChordWave-Lite/releases/latest">Download</a> ·
     <a href="#features">Features</a> ·
     <a href="#installation">Installation</a> ·
     <a href="#building-from-source">Build from source</a>
@@ -63,7 +63,7 @@
 
 ## Installation
 
-Download the latest build from [Releases](https://github.com/Rikki53/BitChord-PC-Continued/releases/latest).
+Download the latest build from [Releases](https://github.com/Rikki53/ChordWave-Lite/releases/latest).
 
 - **Windows** — download `ChordWave-Lite-setup-<version>.exe`, run it, and launch ChordWave Lite. A portable build (`ChordWave-Lite-portable-<version>.zip`) is available too: extract it and run `chordwave.exe`.
 - **macOS / Linux** — use the platform release assets when available.
@@ -75,8 +75,8 @@ If Windows SmartScreen appears for an unsigned build, choose **More info → Run
 You need the [Rust toolchain](https://rustup.rs/). On Windows you also need the MSVC toolchain (Visual Studio Build Tools, C++ workload) for linking.
 
 ```sh
-git clone https://github.com/Rikki53/BitChord-PC-Continued.git
-cd BitChord-PC-Continued
+git clone https://github.com/Rikki53/ChordWave-Lite.git
+cd ChordWave-Lite
 cargo build --release
 ```
 

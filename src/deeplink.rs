@@ -1,5 +1,6 @@
-//! Jam deep links: `ytm-rs://jam/CODE` and `https://rikki53.github.io/BitChord-PC-Continued/jam/?c=CODE`.
-//! Older `grapedjuice.github.io/ytm-rs/jam/` share links still parse.
+//! Jam deep links: `ytm-rs://jam/CODE` and `https://rikki53.github.io/ChordWave-Lite/jam/?c=CODE`.
+//! Older `grapedjuice.github.io/ytm-rs/jam/` and `rikki53.github.io/BitChord-PC-Continued/jam/`
+//! share links still parse.
 //!
 //! Clicking a link launches a new process with the URL as its argument. If another
 //! instance is already running, the new one hands the code over a named pipe and
@@ -42,7 +43,10 @@ pub fn parse(arg: &str) -> Option<String> {
         let (path, query) = rest.split_once('?')?;
         let lower = path.to_ascii_lowercase();
         let path = lower.trim_end_matches('/').trim_end_matches("/index.html");
-        if path != "rikki53.github.io/BitChord-PC-Continued/jam" && path != "grapedjuice.github.io/ytm-rs/jam" {
+        if path != "rikki53.github.io/chordwave-lite/jam"
+            && path != "rikki53.github.io/bitchord-pc-continued/jam"
+            && path != "grapedjuice.github.io/ytm-rs/jam"
+        {
             return None;
         }
         return query_param(query, "c").and_then(normalize);
@@ -297,6 +301,9 @@ mod tests {
 
     #[test]
     fn share_link() {
+        assert_eq!(parse("https://rikki53.github.io/ChordWave-Lite/jam/?c=ABC234").as_deref(), Some("ABC234"));
+        assert_eq!(parse("https://rikki53.github.io/ChordWave-Lite/jam?c=abc234").as_deref(), Some("ABC234"));
+        // Legacy repo-name links still parse, never generated.
         assert_eq!(parse("https://rikki53.github.io/BitChord-PC-Continued/jam/?c=ABC234").as_deref(), Some("ABC234"));
         assert_eq!(parse("https://rikki53.github.io/BitChord-PC-Continued/jam?c=abc234").as_deref(), Some("ABC234"));
         assert_eq!(parse("https://grapedjuice.github.io/ytm-rs/jam/?c=ABC234").as_deref(), Some("ABC234"));

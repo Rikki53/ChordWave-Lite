@@ -3,7 +3,7 @@ name = "chordwave"
 version = "2.1.1"
 edition = "2024"
 license = "GPL-3.0-only"
-repository = "https://github.com/Rikki53/BitChord-PC-Continued"
+repository = "https://github.com/Rikki53/ChordWave-Lite"
 description = "Native YouTube Music client"
 
 [dependencies]

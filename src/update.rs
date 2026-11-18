@@ -23,10 +23,10 @@
 use std::path::{Path, PathBuf};
 use std::sync::{Arc, Mutex};
 
-const LATEST: &str = "https://api.github.com/repos/Rikki53/BitChord-PC-Continued/releases/latest";
-const ALL_RELEASES: &str = "https://api.github.com/repos/Rikki53/BitChord-PC-Continued/releases";
-const BY_TAG: &str = "https://api.github.com/repos/Rikki53/BitChord-PC-Continued/releases/tags/v";
-pub const RELEASES: &str = "https://github.com/Rikki53/BitChord-PC-Continued/releases";
+const LATEST: &str = "https://api.github.com/repos/Rikki53/ChordWave-Lite/releases/latest";
+const ALL_RELEASES: &str = "https://api.github.com/repos/Rikki53/ChordWave-Lite/releases";
+const BY_TAG: &str = "https://api.github.com/repos/Rikki53/ChordWave-Lite/releases/tags/v";
+pub const RELEASES: &str = "https://github.com/Rikki53/ChordWave-Lite/releases";
 
 /// Release notes by version: `None` while fetching or when there are none.
 type Notes = Arc<Mutex<std::collections::HashMap<String, Option<String>>>>;
